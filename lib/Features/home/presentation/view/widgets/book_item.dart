@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:project/Features/home/data/Models/book_model/book_model.dart';
+import 'package:project/Features/home/domain/entities/book_entity.dart';
 import 'package:project/Features/home/presentation/view/widgets/book_image.dart';
 
 class BookItem extends StatelessWidget {
-  const BookItem({super.key, required this.bookModel});
-  final BookModel bookModel;
+  const BookItem({super.key, required this.bookEntity});
+  final BookEntity bookEntity;
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
@@ -12,7 +12,7 @@ class BookItem extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: BookImage(
-            bookModel: bookModel,
+            bookEntity: bookEntity,
           ),
         ));
   }

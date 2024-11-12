@@ -1,16 +1,15 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:project/Features/home/data/Models/book_model/book_model.dart';
+import 'package:project/Features/home/domain/entities/book_entity.dart';
 
 class BookImage extends StatelessWidget {
   const BookImage({
     super.key,
-    required this.bookModel,
+    required this.bookEntity,
   });
-  final BookModel bookModel;
+  final BookEntity bookEntity;
   @override
   Widget build(BuildContext context) {
-    print(bookModel.volumeInfo?.imageLinks?.smallThumbnail ?? '');
     return ClipRRect(
       borderRadius: BorderRadius.circular(20),
       child: CachedNetworkImage(
@@ -19,7 +18,7 @@ class BookImage extends StatelessWidget {
                 Icons.error,
                 color: Colors.white,
               ),
-          imageUrl: bookModel.volumeInfo?.imageLinks?.thumbnail ?? ''),
+          imageUrl: bookEntity.image),
     );
   }
 }

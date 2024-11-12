@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:project/Features/home/data/Models/book_model/book_model.dart';
+import 'package:project/Features/home/domain/entities/book_entity.dart';
 import 'package:project/Features/home/presentation/view/widgets/book_details_app_bar.dart';
 import 'package:project/Features/home/presentation/view/widgets/book_item.dart';
 import 'package:project/Features/home/presentation/view/widgets/rating_row.dart';
+import 'package:project/Features/home/presentation/view/widgets/similar_books.dart';
 import 'package:project/constants.dart';
 import 'package:project/core/utils/styles.dart';
 
 import 'action_button.dart';
 
 class BookDetailsBody extends StatelessWidget {
-  const BookDetailsBody({super.key, required this.bookModel});
-  final BookModel bookModel;
+  const BookDetailsBody({super.key, required this.bookEntity});
+  final BookEntity bookEntity;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -22,17 +23,19 @@ class BookDetailsBody extends StatelessWidget {
               SizedBox(
                   height: kScreenHight * .35,
                   child: BookItem(
-                    bookModel: bookModel,
+                    bookEntity: bookEntity,
                   )),
               const SizedBox(
                 height: 30,
               ),
               Text(
-                "The Jungle Book",
+                bookEntity.title,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
                 style: TextStyles.textStyle20,
               ),
               Text(
-                "Author of book",
+                bookEntity.author ?? "no author",
                 style: TextStyles.textStyle16,
               ),
               const Padding(
@@ -42,7 +45,8 @@ class BookDetailsBody extends StatelessWidget {
               const Padding(
                 padding: EdgeInsets.all(24.0),
                 child: ActionButton(),
-              )
+              ),
+              SimilarBooks(bookEntity: bookEntity)
             ],
           )),
     );

@@ -1,11 +1,20 @@
-import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:project/constants.dart';
-import 'package:project/core/utils/locator_service.dart';
+import 'package:project/core/utils/functions/hive_setup.dart';
+import 'package:project/core/utils/functions/locator_service.dart';
 import 'package:project/core/utils/routing.dart';
+import 'package:project/core/utils/simple_bloc_observer.dart';
 
-void main() {
-  runApp(DevicePreview(builder: (context) => const BookApp()));
+void main() async {
+  Bloc.observer = SimpleBlocObserver();
+  await hiveSetup();
+
+  runApp(
+          // DevicePreview(builder: (context) =>
+          const BookApp())
+      // )
+      ;
   setupGetIt();
 }
 

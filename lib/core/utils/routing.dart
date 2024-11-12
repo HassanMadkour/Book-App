@@ -1,5 +1,5 @@
 import 'package:go_router/go_router.dart';
-import 'package:project/Features/home/data/Models/book_model/book_model.dart';
+import 'package:project/Features/home/domain/entities/book_entity.dart';
 import 'package:project/Features/home/presentation/view/book_details_view.dart';
 import 'package:project/Features/home/presentation/view/home_view.dart';
 import 'package:project/Features/splash/presentation/views/splash_view.dart';
@@ -17,6 +17,6 @@ abstract class AppRouter {
     GoRoute(
         path: kBookDetailsView,
         builder: (context, state) =>
-            BookDetailsView(bookModel: state.extra as BookModel))
+            BookDetailsView(bookEntity: state.extra as BookEntity))
   ]);
 }

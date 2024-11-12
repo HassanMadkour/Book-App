@@ -13,9 +13,9 @@ class CustomButton extends StatelessWidget {
             borderRadius: borderRadius ?? BorderRadius.circular(10)),
         color: color ?? Colors.white,
         onPressed: () {},
-        child: const Text(
-          "19.99\$",
-          style: TextStyle(color: Colors.black),
+        child: Text(
+          color != null ? "Download" : "read",
+          style: const TextStyle(color: Colors.black),
         ),
       ),
     );

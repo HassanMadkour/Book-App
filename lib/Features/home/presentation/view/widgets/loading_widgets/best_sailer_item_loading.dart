@@ -1,27 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:project/Features/home/domain/entities/book_entity.dart';
+import 'package:project/Features/home/presentation/view/widgets/loading_widgets/book_item_loading.dart';
 import 'package:project/constants.dart';
 import 'package:project/core/utils/styles.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
-import 'book_image.dart';
-import 'rating_row.dart';
-
-class BestSailerItem extends StatelessWidget {
-  const BestSailerItem({super.key, required this.bookEntity});
-  final BookEntity bookEntity;
+class BestSailerItemLoading extends StatelessWidget {
+  const BestSailerItemLoading({super.key});
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 12.0),
+    return Skeletonizer(
+      effect: const ShimmerEffect(baseColor: Colors.grey),
+      enabled: true,
       child: SizedBox(
         height: kScreenHight * .15,
         child: Row(
           children: [
-            AspectRatio(
+            const AspectRatio(
               aspectRatio: 1 / 1.5,
-              child: BookImage(
-                bookEntity: bookEntity,
-              ),
+              child: BookItemLoading(),
             ),
             Padding(
               padding: const EdgeInsets.only(left: 24.0),
@@ -34,13 +30,13 @@ class BestSailerItem extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        bookEntity.title,
+                        "Title of book written here",
                         style: TextStyles.textStyle18,
                         overflow: TextOverflow.fade,
                         maxLines: 2,
                       ),
                       Text(
-                        bookEntity.author ?? "no author",
+                        "author of the book",
                         style: TextStyles.textStyle14,
                         overflow: TextOverflow.ellipsis,
                       ),
@@ -53,7 +49,7 @@ class BestSailerItem extends StatelessWidget {
                             overflow: TextOverflow.ellipsis,
                             maxLines: 2,
                           ),
-                          const RatingRow()
+                          const Text("rating here")
                         ],
                       ),
                     ],

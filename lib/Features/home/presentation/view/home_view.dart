@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:project/Features/home/data/repos/home_repo.dart';
-import 'package:project/Features/home/presentation/view_models/fetch_book_cubit/fetch_book_cubit.dart';
-import 'package:project/core/utils/locator_service.dart';
-import 'widgets/home_view_u_i_builder.dart';
+import 'package:project/Features/home/domain/repos/home_repo.dart';
+import 'package:project/Features/home/domain/use_cases/fetch_feature_books_use_case.dart';
+import 'package:project/Features/home/domain/use_cases/fetch_newest_books_use_case.dart';
+import 'package:project/Features/home/presentation/manger/fetch_feature_book_cubit/fetch_feature_book_cubit.dart';
+import 'package:project/Features/home/presentation/manger/fetch_newest_books_cubit/fetch_newest_books_cubit.dart';
+import 'package:project/Features/home/presentation/view/widgets/home_view_body.dart';
+import 'package:project/core/utils/functions/locator_service.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -11,10 +14,20 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocProvider(
-        create: (context) =>
-            FetchBookCubit(getIt.get<HomeRepo>())..fetchBooks(),
-        child: const HomeViewUIBuilder(),
+      body: MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) => FetchFeatureBookCubit(
+                FetchFeatureBooksUseCase(getIt.get<HomeRepo>()))
+              ..fetch(0),
+          ),
+          BlocProvider(
+            create: (context) => FetchNewestBooksCubit(
+                FetchNewestBooksUseCase(getIt.get<HomeRepo>()))
+              ..fetch(0),
+          )
+        ],
+        child: const HomeViewBody(),
       ),
     );
   }
