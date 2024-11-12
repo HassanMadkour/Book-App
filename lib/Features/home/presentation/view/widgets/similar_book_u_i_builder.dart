@@ -22,7 +22,7 @@ class _SimilarBookUIBuilderState extends State<SimilarBookUIBuilder> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-        height: MediaQuery.sizeOf(context).height * .2,
+        height: MediaQuery.sizeOf(context).height * .19,
         child: BlocConsumer<FetchSimilarBooksCubit, FetchSimilarBooksState>(
             listener: (context, state) {
           if (state is FetchSimilarBooksFailurePagination) {

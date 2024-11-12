@@ -1,3 +1,4 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:project/constants.dart';
@@ -10,11 +11,7 @@ void main() async {
   Bloc.observer = SimpleBlocObserver();
   await hiveSetup();
 
-  runApp(
-          // DevicePreview(builder: (context) =>
-          const BookApp())
-      // )
-      ;
+  runApp(DevicePreview(builder: (context) => const BookApp()));
   setupGetIt();
 }
 

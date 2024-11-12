@@ -8,7 +8,7 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: MaterialButton(
-        height: 45,
+        height: 40,
         shape: RoundedRectangleBorder(
             borderRadius: borderRadius ?? BorderRadius.circular(10)),
         color: color ?? Colors.white,

@@ -14,7 +14,7 @@ class FetchNewestBooksCubit extends Cubit<FetchNewestBooksState> {
     } else {
       emit(FetchNewestBooksLoadingPagination());
     }
-    await Future.delayed(const Duration(seconds: 5));
+    await Future.delayed(const Duration(seconds: 2));
     var result = await newestBooksUseCase.call(pageNumber);
     result.fold((l) {
       if (pageNumber == 0) {

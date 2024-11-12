@@ -21,12 +21,12 @@ class BookDetailsBody extends StatelessWidget {
             children: [
               const BookDetailsAppBar(),
               SizedBox(
-                  height: kScreenHight * .35,
+                  height: kScreenHight * .32,
                   child: BookItem(
                     bookEntity: bookEntity,
                   )),
               const SizedBox(
-                height: 30,
+                height: 25,
               ),
               Text(
                 bookEntity.title,
@@ -43,7 +43,12 @@ class BookDetailsBody extends StatelessWidget {
                 child: RatingRow(),
               ),
               const Padding(
-                padding: EdgeInsets.all(24.0),
+                padding: EdgeInsets.only(
+                  left: 24.0,
+                  right: 24.0,
+                  bottom: 24.0,
+                  top: 16.0,
+                ),
                 child: ActionButton(),
               ),
               SimilarBooks(bookEntity: bookEntity)
